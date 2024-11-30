@@ -25,7 +25,7 @@ model.fit(dataset['question'], dataset['answer'])
 
 @app.route('/')
 def home():
-    return render_template('index.html')  # This serves the index.html file
+    return render_template('index.html') 
 
 @app.route('/chat', methods=['POST'])
 def chat():
