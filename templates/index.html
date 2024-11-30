@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+        }
+        .chat-message.bot {
+            text-align: left;
+        }
+        .chat-message.user {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h1 class="text-3xl font-bold text-center mb-4">JBRAIN AI Chatbot</h1>
+    
+    <!-- Chat box -->
+    <div id="chat-box" class="chat-box">
+        <!-- Messages will be displayed here -->
+    </div>
+    
+    <!-- User input -->
+    <input type="text" id="user-input" class="w-full p-2 rounded-md border border-gray-300" placeholder="Type your message..." />
+    <button id="send-btn" class="w-full bg-blue-500 text-white p-2 rounded-md mt-2">Send</button>
+</div>
+
+<script>
+    // Function to append messages to the chat box
+    function appendMessage(message, type) {
+        const messageDiv = $('<div>').addClass('chat-message').addClass(type).text(message);
+        $('#chat-box').append(messageDiv);
+        $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight); // Scroll to the latest message
+    }
+
+    // Send message when button is clicked
+    $('#send-btn').on('click', function() {
+        const userMessage = $('#user-input').val().trim();
+        if (userMessage) {
+            // Append user message to the chat
+            appendMessage(userMessage, 'user');
+            $('#user-input').val(''); // Clear input field
+
+            // Send message to Flask backend
+            $.ajax({
+                url: '/chat', // Flask server URL
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ message: userMessage }),
+                success: function(data) {
+                    const botResponse = data.response;
+                    appendMessage(botResponse, 'bot');
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                    appendMessage("Sorry, something went wrong. Please try again.", 'bot');
+                }
+            });
+        }
+    });
+
+    // Optional: Allow "Enter" key to send message
+    $('#user-input').on('keypress', function(event) {
+        if (event.which === 13) {
+            $('#send-btn').click();
+        }
+    });
+</script>
+
+</body>
+</html>
