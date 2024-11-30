@@ -3,45 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
+    <title>JBRAIN AI Chatbot</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
-<div class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-xl mt-10">
-    <h1 class="text-4xl font-semibold text-center text-gray-800 mb-6">JBRAIN AI Chatbot</h1>
-    
-    <!-- Chat box -->
-    <div id="chat-box" class="h-96 overflow-y-auto bg-gray-50 p-4 mb-6 rounded-lg border border-gray-200">
-        <!-- Messages will be displayed here -->
-    </div>
-    
-    <!-- User input -->
-    <div class="flex flex-col space-y-2">
-        <input type="text" id="user-input" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your message..." />
-        <button id="send-btn" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">Send</button>
-    </div>
-    
-    <!-- Suggestions -->
-    <div class="mt-4 space-x-2 text-center">
-        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="What services do you offer?">What services do you offer?</button>
-        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="Can you help with my programming project?">Can you help with my programming project?</button>
-        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="What is freelancing in programming?">What is freelancing in programming?</button>
-        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="How do I get started with freelancing?">How do I get started with freelancing?</button>
+<!-- Centered Chatbox Container -->
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="max-w-3xl w-full p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">JBRAIN AI Chatbot</h1>
+
+        <!-- Chat box -->
+        <div id="chat-box" class="h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6 space-y-4">
+            <!-- Messages will be displayed here -->
+        </div>
+
+        <!-- User input section -->
+        <div class="flex flex-col space-y-4">
+            <input type="text" id="user-input" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="Type your message..." />
+            <button id="send-btn" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-200">Send</button>
+        </div>
+
+        <!-- Suggestions Section -->
+        <div class="mt-6 grid grid-cols-2 gap-4">
+            <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md shadow-md" data-suggestion="What services do you offer?">What services do you offer?</button>
+            <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md shadow-md" data-suggestion="Can you help with my programming project?">Can you help with my project?</button>
+            <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md shadow-md" data-suggestion="What programming languages do you specialize in?">What programming languages do you specialize in?</button>
+            <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md shadow-md" data-suggestion="May I see your sample project for ecommerce?">May I see your sample project for ecommerce?</button>
+        </div>
     </div>
 </div>
 
 <script>
     // Function to append messages to the chat box
     function appendMessage(message, type) {
-        const messageDiv = $('<div>').addClass('chat-message').addClass(type).addClass('mb-4').text(message);
+        const messageDiv = $('<div>').addClass('chat-message').addClass(type).addClass('mb-4 p-3 rounded-lg');
         if (type === 'user') {
-            messageDiv.addClass('text-right text-blue-600 font-semibold');
+            messageDiv.addClass('bg-blue-100 text-blue-800 text-right');
         } else {
-            messageDiv.addClass('text-left text-gray-700');
+            messageDiv.addClass('bg-gray-200 text-gray-800 text-left');
         }
+        messageDiv.text(message);
         $('#chat-box').append(messageDiv);
         $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight); // Scroll to the latest message
     }
