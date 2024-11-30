@@ -31,10 +31,29 @@ def home():
 def chat():
     user_input = request.json.get("message")
     
-    # Predict the response using the trained model
-    predicted_response = model.predict([user_input])[0]
+    if not user_input:
+        return jsonify({"error": "No message provided"}), 400  # Return an error if no message is provided
+
+    # Check if the question is about the e-commerce project
+    if "ecommerce project" in user_input.lower():
+        response = {
+            "response": '''
+                <img src="https://github.com/user-attachments/assets/eb048ca0-6acc-42da-8596-8ece266d3b64" alt="E-commerce Sample Project" />
+            '''
+        }
+    # Check if the question is about programming languages
+    elif "programming languages" in user_input.lower():
+        response = {
+            "response": '''
+                <img width="325" align="center" src="https://github-readme-stats-salesp07.vercel.app/api/top-langs/?username=anderson895&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="top langs" />
+            '''
+        }
+    else:
+        # Use the trained model for other questions
+        predicted_response = model.predict([user_input])[0]
+        response = {"response": predicted_response}
     
-    return jsonify({"response": predicted_response})
+    return jsonify(response)
 
 if __name__ == "__main__":
       app.run(host="0.0.0.0", port=5001)

@@ -7,56 +7,41 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-        }
-        .chat-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .chat-box {
-            height: 400px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        .chat-message {
-            margin-bottom: 15px;
-        }
-        .chat-message.bot {
-            text-align: left;
-        }
-        .chat-message.user {
-            text-align: right;
-        }
-    </style>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 
-<div class="chat-container">
-    <h1 class="text-3xl font-bold text-center mb-4">JBRAIN AI Chatbot</h1>
+<div class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-xl mt-10">
+    <h1 class="text-4xl font-semibold text-center text-gray-800 mb-6">JBRAIN AI Chatbot</h1>
     
     <!-- Chat box -->
-    <div id="chat-box" class="chat-box">
+    <div id="chat-box" class="h-96 overflow-y-auto bg-gray-50 p-4 mb-6 rounded-lg border border-gray-200">
         <!-- Messages will be displayed here -->
     </div>
     
     <!-- User input -->
-    <input type="text" id="user-input" class="w-full p-2 rounded-md border border-gray-300" placeholder="Type your message..." />
-    <button id="send-btn" class="w-full bg-blue-500 text-white p-2 rounded-md mt-2">Send</button>
+    <div class="flex flex-col space-y-2">
+        <input type="text" id="user-input" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your message..." />
+        <button id="send-btn" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">Send</button>
+    </div>
+    
+    <!-- Suggestions -->
+    <div class="mt-4 space-x-2 text-center">
+        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="What services do you offer?">What services do you offer?</button>
+        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="Can you help with my programming project?">Can you help with my programming project?</button>
+        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="What is freelancing in programming?">What is freelancing in programming?</button>
+        <button class="suggestion-btn bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-4 rounded-md" data-suggestion="How do I get started with freelancing?">How do I get started with freelancing?</button>
+    </div>
 </div>
 
 <script>
     // Function to append messages to the chat box
     function appendMessage(message, type) {
-        const messageDiv = $('<div>').addClass('chat-message').addClass(type).text(message);
+        const messageDiv = $('<div>').addClass('chat-message').addClass(type).addClass('mb-4').text(message);
+        if (type === 'user') {
+            messageDiv.addClass('text-right text-blue-600 font-semibold');
+        } else {
+            messageDiv.addClass('text-left text-gray-700');
+        }
         $('#chat-box').append(messageDiv);
         $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight); // Scroll to the latest message
     }
@@ -77,7 +62,13 @@
                 data: JSON.stringify({ message: userMessage }),
                 success: function(data) {
                     const botResponse = data.response;
-                    appendMessage(botResponse, 'bot');
+                    
+                    // If the response contains an <img> tag, append it as HTML
+                    if (botResponse.includes('<img')) {
+                        $('#chat-box').append($(botResponse));
+                    } else {
+                        appendMessage(botResponse, 'bot');
+                    }
                 },
                 error: function(error) {
                     console.error('Error:', error);
@@ -92,6 +83,13 @@
         if (event.which === 13) {
             $('#send-btn').click();
         }
+    });
+
+    // Handle suggestion buttons click
+    $('.suggestion-btn').on('click', function() {
+        const suggestion = $(this).data('suggestion');
+        $('#user-input').val(suggestion); // Set the suggestion in the input field
+        $('#send-btn').click(); // Trigger the send button click
     });
 </script>
 
