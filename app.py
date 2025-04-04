@@ -42,10 +42,10 @@ def chat():
                 <img src="https://portfolio-delta-three-97.vercel.app/img/portfolio/adornsia.png" alt="E-commerce Sample Project" />
             '''
         }
-    if "Point of sales project" in user_input.lower():
+    if "point of sale" in user_input.lower():
         response = {
             "response": '''
-                <img src="https://github.com/user-attachments/assets/eb048ca0-6acc-42da-8596-8ece266d3b64" alt="E-commerce Sample Project" />
+                <img src="https://portfolio-delta-three-97.vercel.app/img/portfolio/pos.png" alt="E-commerce Sample Project" />
             '''
         }
     # Check if the question is about programming languages
@@ -53,6 +53,21 @@ def chat():
         response = {
             "response": '''
                 <img width="325" align="center" src="https://github-readme-stats-salesp07.vercel.app/api/top-langs/?username=anderson895&hide=HTML&langs_count=8&layout=compact&theme=react&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="top langs" />
+            '''
+        }
+
+         # Check if the question is about programming languages
+    elif "sample mobile game" in user_input.lower():
+        response = {
+            "response": '''
+                <img width="325" align="center" src="https://portfolio-delta-three-97.vercel.app/img/portfolio/quiz_ninja.png" alt="top langs" />
+            '''
+        }
+
+    elif "sample e-learning" in user_input.lower():
+        response = {
+            "response": '''
+                <img width="325" align="center" src="https://portfolio-delta-three-97.vercel.app/img/portfolio/ProjactTeach.png" alt="top langs" />
             '''
         }
         
@@ -72,7 +87,7 @@ def chat():
         response = {
             "response": '''
                 <iframe 
-                    src="https://portfolio-delta-three-97.vercel.app/portfolio.html" 
+                    src="https://portfolio-delta-three-97.vercel.app/" 
                     width="100%" 
                     height="600" 
                     style="border: none;">

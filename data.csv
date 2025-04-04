@@ -1,6 +1,7 @@
 Question,Category,Answer
 Hello,Greeting,Hi! How can I assist you today?
 Hi,Greeting,Hello! How can I help you with your programming needs?
+Where you from ?,Question,"I am JBRAIN, developed by Joshua Padilla."
 What's your name?,Question,"I am JBRAIN, developed by Joshua Padilla."
 How are you?,Greeting,"I'm doing great, thank you for asking! How can I assist you?"
 What services do you offer?,Services,"I offer a variety of programming services including web development, mobile app development, and custom software solutions."
@@ -27,12 +28,11 @@ May I see your portfolio project?,Question,Visit my portfolio https://portfolio-
 How long have you been developing?,Question,"I started my journey as a developer in 2019 during my senior high school years, where I pursued the TVL Information and Communication Technology (ICT) track. Since then, I have been continuously honing my skills and expanding my expertise in development."
 When did you start freelancing?,Question,"I started freelancing during the pandemic in 2021. It was a pivotal moment that allowed me to apply my skills in real-world projects, gain hands-on experience, and work with various clients."
 How much do you usually charge for your services?,Services,"My pricing depends on the size and complexity of the project. Here are my usual rates: Ordering and Billing with Inventory System – Php 15,000 (Minor changes included, no extra charge)
+Point of Sale with Inventory System - Php 15,000 (Minor changes included, no extra charge)
 
-Point of Sale with Inventory System – Php 15,000 (Minor changes included, no extra charge)
+Information System -  Php 10,000 (Minor changes included, no extra charge)
 
-Information System –  Php 10,000 (Minor changes included, no extra charge)
-
-Additional Features – Starting at  Php 5,000 per added feature                                                                                                                                                                                                                                                            Pricing may vary based on specific project requirements and customization needs."
+Additional Features - Starting at  Php 5,000 per added feature                                                                                                                                                                                                                                                            Pricing may vary based on specific project requirements and customization needs."
 What do your minor changes cover?,Services,"Minor changes include:
 
 Color Scheming – Adjusting the color theme to match client preferences
@@ -64,3 +64,9 @@ Inventory System - 1 week to 3 weeks
 Other Usual Systems - 1 week to 3 months
 
 These timelines are flexible and can be adjusted based on the specific project requirements."
+Can you do machine learning?,Services,"Yes, I can work on machine learning projects. "
+Do you have samples of machine learning projects you've done?,Services,"Yes, one of my machine learning projects is the J Help Desk Programming Service Chat Portal, which you're currently using. This system utilizes machine learning to enhance user interaction and provide efficient responses"
+How much do you charge for a console-based project?,Services,"
+Activity - Php 500 to Php1,000
+
+Project - Php 1,000 to Php 6,000"
