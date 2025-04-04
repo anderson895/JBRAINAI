@@ -6,8 +6,8 @@ How are you?,Greeting,"I'm doing great, thank you for asking! How can I assist y
 What services do you offer?,Services,"I offer a variety of programming services including web development, mobile app development, and custom software solutions."
 Can you help me with my programming project?,Services,"Of course! Let me know the details of your project, and I'll be happy to assist you."
 What is freelancing in programming?,Freelancing,"Freelancing in programming means working on projects independently, often for multiple clients, without being tied to a single employer."
-How can I contact you?,Contact,"You can contact me through email or messaging apps. Feel free to reach out anytime."
-Do you offer free consultations?,Consultation,"I offer free initial consultations where we can discuss your project and how I can assist you."
+How can I contact you?,Contact,You can contact me through email or messaging apps. Feel free to reach out anytime.
+Do you offer free consultations?,Consultation,I offer free initial consultations where we can discuss your project and how I can assist you.
 What are your working hours?,Working Hours,"I am available for consultation and work from Monday to Friday, 9 AM to 6 PM."
 What programming languages do you specialize in?,Languages,"I specialize in languages such as Python, JavaScript, C++, and PHP."
 How do I get started with freelancing in programming?,Getting Started,"You can start by building a portfolio, joining freelancing platforms, and networking with potential clients."
@@ -16,8 +16,51 @@ Do you provide project estimates?,Services,"Yes, I provide project estimates bas
 What is your experience in software development?,Experience,"I have over X years of experience working on various software development projects, including web and mobile apps."
 How do I communicate with clients during a project?,Communication,"I typically communicate via email, messaging apps, and video calls to ensure regular updates and a clear understanding of project requirements."
 Can you help with bug fixes in my code?,Services,"Yes, I can help debug and fix issues in your code. Provide the details, and I'll assist in resolving the problem."
-What is your payment method?,Payments,"I accept payments through Gcash, bank transfers, or other online payment methods depending on the client."
+What is your payment method?,Payments,"I accept payments through Gcash, bank transfers, or other online payment methods, depending on the client's preference. A downpayment is required before we proceed with the development."
 Do you work with international clients?,Clients,"Yes, I work with clients from around the world. I have experience collaborating with clients in different time zones."
 Can you provide references from past clients?,References,"Yes, I can provide references upon request. Just let me know if you'd like to see examples of past work or testimonials."
-Where can we find your developer?,Communication,"Go to this link and message this account: https://web.facebook.com/joshuapadilla895."
-May I see your sample ecommerce project?,Question,"Just Type `ecommerce project` "
+Where can we find your developer?,Communication,Go to this link and message this account: https://web.facebook.com/joshuapadilla895.
+May I see your sample ecommerce project?,Question,Just Type `ecommerce project` 
+What is your email?,Question,andersonandy046@gmail.com
+May I see your sample project?,Question,Visit my portfolio https://portfolio-delta-three-97.vercel.app/portfolio.html
+May I see your portfolio project?,Question,Visit my portfolio https://portfolio-delta-three-97.vercel.app/portfolio.html
+How long have you been developing?,Question,"I started my journey as a developer in 2019 during my senior high school years, where I pursued the TVL Information and Communication Technology (ICT) track. Since then, I have been continuously honing my skills and expanding my expertise in development."
+When did you start freelancing?,Question,"I started freelancing during the pandemic in 2021. It was a pivotal moment that allowed me to apply my skills in real-world projects, gain hands-on experience, and work with various clients."
+How much do you usually charge for your services?,Services,"My pricing depends on the size and complexity of the project. Here are my usual rates: Ordering and Billing with Inventory System – Php 15,000 (Minor changes included, no extra charge)
+
+Point of Sale with Inventory System – Php 15,000 (Minor changes included, no extra charge)
+
+Information System –  Php 10,000 (Minor changes included, no extra charge)
+
+Additional Features – Starting at  Php 5,000 per added feature                                                                                                                                                                                                                                                            Pricing may vary based on specific project requirements and customization needs."
+What do your minor changes cover?,Services,"Minor changes include:
+
+Color Scheming – Adjusting the color theme to match client preferences
+
+Basic Layouting – Simple modifications in the design and arrangement of elements
+
+Basic Labeling – Renaming or adjusting text labels for better clarity
+
+These minor adjustments are included at no extra charge."
+How much is your student pricing?,Services,"My student pricing is as follows:
+
+Activity - Php 500 to Php1,000
+
+Project - Php 1,000 to Php 6,000
+
+Capstone - Php6,000 to Php30,000
+
+All prices are negotiable depending on the scope of work. We can further discuss the details through a video call."
+How long does the development of a typical system?,Services,"The development time frame depends on the size and complexity of the system. Here are my usual time estimates:
+
+Information System - 1 to 3 weeks
+
+Commerce System - 1 to 3 months
+
+Point of Sale System - 1 week to 2 weeks
+
+Inventory System - 1 week to 3 weeks
+
+Other Usual Systems - 1 week to 3 months
+
+These timelines are flexible and can be adjusted based on the specific project requirements."

@@ -77,50 +77,70 @@ $('#send-btn').on('click', function() {
             contentType: 'application/json',
             data: JSON.stringify({ message: userMessage }),
             success: function(data) {
-                // console.log(data);
                 const botResponse = data.response;
-        
+            
                 $('#chat-box').show();
-        
-                // === Chat Head / Avatar ===
+            
                 const avatar = $('<img>')
-                    .attr('src', '/static/assets/logo.jpg') // Palitan mo ng actual path ng avatar mo
+                    .attr('src', '/static/assets/logo.jpg')
                     .addClass('w-10 h-10 rounded-full mr-3');
-        
-                // === Flex container for avatar and message ===
+            
                 const containerDiv = $('<div>').addClass('flex items-start mb-4');
-        
-                // === Message container ===
                 const messageDiv = $('<div>').addClass('chat-message bot p-3 rounded-lg bg-[#343541] text-white text-left max-w-[75%]');
-        
-                // Check if the response contains an <img> tag
-                if (botResponse.includes('<img')) {
-                    const tempDiv = $('<div>').html(botResponse);
-                    const imgTag = tempDiv.find('img');
-                    const imgSrc = imgTag.attr('src') || data.image_url;
-        
-                    if (imgSrc) {
-                        const imgElement = $('<img>').attr('src', imgSrc).addClass('w-full rounded-lg mt-2');
-                        messageDiv.append(imgElement);
-                    }
-        
+            
+                // Create a temporary div to parse HTML content
+                const tempDiv = $('<div>').html(botResponse);
+            
+                // Check for iframe
+                const iframeTag = tempDiv.find('iframe');
+                if (iframeTag.length > 0) {
+                    // Make the messageDiv wider/taller for iframe content
+                    messageDiv
+                        .removeClass('max-w-[75%]')
+                        .addClass('w-full');
+                
+                    iframeTag.addClass('w-full h-64 rounded-lg mt-2'); // Adjust height if needed
+                    messageDiv.append(iframeTag);
+                
                     const text = tempDiv.text().trim();
                     if (text) {
                         const textDiv = $('<p>').text(text);
                         messageDiv.prepend(textDiv);
                     }
-        
+                
                     containerDiv.append(avatar).append(messageDiv);
                     $('#chat-box').append(containerDiv);
                     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-                } else {
-                    // Typing effect for text-only messages
+                }
+                
+                else if (botResponse.includes('<img')) {
+                    const imgTag = tempDiv.find('img');
+                    const imgSrc = imgTag.attr('src') || data.image_url;
+                
+                    if (imgSrc) {
+                        const imgElement = $('<img>').attr('src', imgSrc).addClass('w-full rounded-lg mt-2');
+                        messageDiv.append(imgElement);
+                    }
+                
+                    const text = tempDiv.text().trim();
+                    if (text) {
+                        const textDiv = $('<p>').text(text);
+                        messageDiv.prepend(textDiv);
+                    }
+                
+                    containerDiv.append(avatar).append(messageDiv);
+                    $('#chat-box').append(containerDiv);
+                    $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
+                }
+                
+                // Fallback: Text-only with typing effect
+                else {
                     let index = 0;
                     messageDiv.text('');
                     containerDiv.append(avatar).append(messageDiv);
                     $('#chat-box').append(containerDiv);
                     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-        
+            
                     function typeWriter() {
                         if (index < botResponse.length) {
                             messageDiv.append(botResponse.charAt(index));
@@ -128,7 +148,7 @@ $('#send-btn').on('click', function() {
                             setTimeout(typeWriter, 40);
                         }
                     }
-        
+            
                     typeWriter();
                 }
             },
@@ -136,6 +156,8 @@ $('#send-btn').on('click', function() {
                 console.error('Error:', error);
                 appendMessage("Sorry, something went wrong. Please try again.", 'bot');
             }
+            
+            
         });
         
     }
