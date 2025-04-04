@@ -1,7 +1,4 @@
 $(document).ready(function () {
-
-    
-
     $('#toggle-suggestions').click(function () {
         $('#suggestions-section').slideToggle('fast');
 
@@ -80,39 +77,50 @@ $('#send-btn').on('click', function() {
             contentType: 'application/json',
             data: JSON.stringify({ message: userMessage }),
             success: function(data) {
-                console.log(data);
+                // console.log(data);
                 const botResponse = data.response;
-            
-                $('#chat-box').show(); // In case it isn't shown yet
-            
-                // Create a container for bot response
-                const messageDiv = $('<div>').addClass('chat-message bot mb-4 p-3 rounded-lg bg-[#343541] text-white text-left');
-            
+        
+                $('#chat-box').show();
+        
+                // === Chat Head / Avatar ===
+                const avatar = $('<img>')
+                    .attr('src', '/static/assets/logo.jpg') // Palitan mo ng actual path ng avatar mo
+                    .addClass('w-10 h-10 rounded-full mr-3');
+        
+                // === Flex container for avatar and message ===
+                const containerDiv = $('<div>').addClass('flex items-start mb-4');
+        
+                // === Message container ===
+                const messageDiv = $('<div>').addClass('chat-message bot p-3 rounded-lg bg-[#343541] text-white text-left max-w-[75%]');
+        
                 // Check if the response contains an <img> tag
                 if (botResponse.includes('<img')) {
-                    // Extract image URL using regex or use data.image_url if available
                     const tempDiv = $('<div>').html(botResponse);
                     const imgTag = tempDiv.find('img');
                     const imgSrc = imgTag.attr('src') || data.image_url;
-            
+        
                     if (imgSrc) {
                         const imgElement = $('<img>').attr('src', imgSrc).addClass('w-full rounded-lg mt-2');
                         messageDiv.append(imgElement);
                     }
-            
-                    // Also add any accompanying text (not part of <img>)
+        
                     const text = tempDiv.text().trim();
                     if (text) {
                         const textDiv = $('<p>').text(text);
                         messageDiv.prepend(textDiv);
                     }
+        
+                    containerDiv.append(avatar).append(messageDiv);
+                    $('#chat-box').append(containerDiv);
+                    $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
                 } else {
                     // Typing effect for text-only messages
                     let index = 0;
                     messageDiv.text('');
-                    $('#chat-box').append(messageDiv);
+                    containerDiv.append(avatar).append(messageDiv);
+                    $('#chat-box').append(containerDiv);
                     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-            
+        
                     function typeWriter() {
                         if (index < botResponse.length) {
                             messageDiv.append(botResponse.charAt(index));
@@ -120,18 +128,15 @@ $('#send-btn').on('click', function() {
                             setTimeout(typeWriter, 40);
                         }
                     }
-            
+        
                     typeWriter();
-                    return; // Don't double-append
                 }
-            
-                $('#chat-box').append(messageDiv);
-                $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
             },
             error: function(error) {
                 console.error('Error:', error);
                 appendMessage("Sorry, something went wrong. Please try again.", 'bot');
             }
         });
+        
     }
 });
