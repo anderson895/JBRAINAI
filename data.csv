@@ -25,7 +25,7 @@ May I see your sample ecommerce project?,Question,Just Type `ecommerce project`
 What is your email?,Question,andersonandy046@gmail.com
 May I see your sample project?,Question,Visit my portfolio https://portfolio-delta-three-97.vercel.app/portfolio.html
 May I see your portfolio project?,Question,Visit my portfolio https://portfolio-delta-three-97.vercel.app/portfolio.html
-How long have you been developing?,Question,"I started my journey as a developer in 2019 during my senior high school years, where I pursued the TVL Information and Communication Technology (ICT) track. Since then, I have been continuously honing my skills and expanding my expertise in development."
+How long have you been developing a system?,Question,"I started my journey as a developer in 2019 during my senior high school years, where I pursued the TVL Information and Communication Technology (ICT) track. Since then, I have been continuously honing my skills and expanding my expertise in development."
 When did you start freelancing?,Question,"I started freelancing during the pandemic in 2021. It was a pivotal moment that allowed me to apply my skills in real-world projects, gain hands-on experience, and work with various clients."
 How much do you usually charge for your services?,Services,"My pricing depends on the size and complexity of the project. Here are my usual rates: Ordering and Billing with Inventory System – Php 15,000 (Minor changes included, no extra charge)
 Point of Sale with Inventory System - Php 15,000 (Minor changes included, no extra charge)
@@ -51,19 +51,7 @@ Project - Php 1,000 to Php 6,000
 Capstone - Php6,000 to Php30,000
 
 All prices are negotiable depending on the scope of work. We can further discuss the details through a video call."
-When did you start developing systems?,Services,"The development time frame depends on the size and complexity of the system. Here are my usual time estimates:
-
-Information System - 1 to 3 weeks
-
-Commerce System - 1 to 3 months
-
-Point of Sale System - 1 week to 2 weeks
-
-Inventory System - 1 week to 3 weeks
-
-Other Usual Systems - 1 week to 3 months
-
-These timelines are flexible and can be adjusted based on the specific project requirements."
+When did you start developing systems?,Services,I started developing systems in 2019 during my senior high school years under the TVL Information and Communication Technology (ICT) strand.
 Can you do machine learning?,Services,"Yes, I can work on machine learning projects. "
 Do you have samples of machine learning projects you've done?,Services,"Yes, one of my machine learning projects is the J Help Desk Programming Service Chat Portal, which you're currently using. This system utilizes machine learning to enhance user interaction and provide efficient responses"
 How much do you charge for a console-based project?,Services,"
